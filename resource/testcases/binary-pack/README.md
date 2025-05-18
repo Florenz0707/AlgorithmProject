@@ -1,7 +1,6 @@
 # 文件读取提示
 
 ---
-
 每个文件夹下有三个文件：`test.in` `outp.out` `time.out`
 
 ## test.in
