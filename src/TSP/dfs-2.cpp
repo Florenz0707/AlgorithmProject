@@ -89,9 +89,3 @@ int main() {
 
     return 0;
 }
-/*
- * Time cost: 20 ms.
-Recursive function called times: 1613542
-Min cost: 291
-Path: 1 11 4 6 8 10 14 12 3 7 5 9 15 2 13
- */
