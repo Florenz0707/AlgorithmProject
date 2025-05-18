@@ -19,6 +19,7 @@ using namespace std;
 
 int n;
 int grid[MAXN][MAXN];
+int minn_grid[MAXN][MAXN];
 int vis[MAXN];
 int path[MAXN];
 int minn = INF;
@@ -53,11 +54,11 @@ int main() {
     }
     long start = clock();
 
-    int tmp_path[n + 2];
+    int _path[n + 2];
     for (int i = 1; i <= n; ++i) vis[i] = 0;
     vis[1] = 1;
-    tmp_path[1] = 1;
-    dfs(1, 0, 1, tmp_path);
+    _path[1] = 1;
+    dfs(1, 0, 1, _path);
 
     long end = clock();
     cout << "Time cost: " << (double)(end - start) << " ms.\n";
