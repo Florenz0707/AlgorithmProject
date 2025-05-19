@@ -5,7 +5,7 @@ using namespace std;
 
 /*
  * 说明：采用BFS优先队列搜索的写法并使用初步约束，能够基本正确求解
- * 问题：仅能解决n<=5规模的问题，之后占用空间过大，程序内存溢出终止
+ * 问题：仅能解决n<=5规模的问题，之后占用空间过大，内存溢出
  */
 
 #define ll long long
@@ -31,19 +31,18 @@ struct Status {
 
     Status() = default;
 
-    Status(int node, int cost, int len, int vis[], int cur_path[]) {
+    Status(int node, int cost, int len, const int vis[], const int cur_path[]) {
         this->node = node;
         this->cost = cost;
         this->len = len;
-        for (int i = 0; i < MAXN; ++i) {
-            this->vis[i] = vis[i];
-            this->cur_path[i] = cur_path[i];
-        }
+        copy(vis, vis + MAXN, this->vis);
+        copy(cur_path, cur_path + MAXN, this->cur_path);
     }
 };
 
 struct StatusCompare {
     bool operator()(Status &s1, Status &s2) {
+        if (s1.cost == s2.cost) return s1.len < s2.len;
         return s1.cost > s2.cost;
     }
 };
@@ -66,7 +65,6 @@ int main() {
     }
     init_vis[1] = 1;
     init_path[1] = 1;
-
 
     qwq.emplace(1, 0, 1, init_vis, init_path);
     while (!qwq.empty()) {
