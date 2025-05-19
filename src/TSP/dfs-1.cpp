@@ -46,7 +46,7 @@ void dfs(int node, int cost, int len, int cur_path[]) {
         return;
     }
     // if (cost >= minn) return;
-    // tighten cut-branch condition
+    // tighten branch & bound condition
     if (cost + minn_grid[node][n - len + 1] >= minn) return;
     for (int i = 1; i <= n; ++i) {
         if (!vis[i] && grid[node][i] != 0) {

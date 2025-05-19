@@ -15,7 +15,7 @@ using namespace std;
 #define min(x, y) ((x) > (y)) ? (y) : (x)
 
 #define INF 0x3f3f3f3f
-#define MAXN 26
+#define MAXN 17
 #define MAXM ((1 << (MAXN - 1)) + 2)
 
 int n;
