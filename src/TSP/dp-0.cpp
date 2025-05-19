@@ -77,14 +77,12 @@ int main() {
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             cin >> grid[i][j];
-            if (i != j && grid[i][j] == 0) grid[i][j] = INF;
         }
     }
     long start = clock();
 
     m = 1 << (n - 1);
     solve();
-
     getPath();
 
     long end = clock();
