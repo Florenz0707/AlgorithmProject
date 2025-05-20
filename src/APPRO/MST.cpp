@@ -17,6 +17,8 @@ using namespace std;
 #define INF 0x3f3f3f3f
 #define MAXN 50
 
+void getPath(int node, vector<int> &ret, vector<int> mst[]);
+
 int n;
 int grid[MAXN][MAXN];
 int path[MAXN];
@@ -24,33 +26,41 @@ int minn = INF;
 
 void solve(int st) {
     int vis[MAXN];
-    for (int i = 1; i <= n; ++i) vis[i] = 0;
-    int mst[MAXN];
-    int cnt = 0;
-
+    for (int i = 0; i < MAXN; ++i) vis[i] = 0;
     vis[st] = 1;
-    mst[++cnt] = st;
+    vector<int> mst[MAXN];
+    int cnt = 1;
 
     while (cnt < n) {
-        int next = 0, minx = INF;
-        for (int i = 1; i <= cnt; ++i) {
+        int src = 0, dst = 0, minx = INF;
+        for (int i = 1; i <= n; ++i) {
+            if (!vis[i]) continue;
             for (int k = 1; k <= n; ++k) {
-                if (!vis[k] && grid[i][k] != 0 && grid[i][k] < minx) {
-                    next = k;
+                if (!vis[k] && grid[i][k] < minx) {
+                    src = i;
+                    dst = k;
                     minx = grid[i][k];
                 }
             }
         }
-        vis[next] = 1;
-        mst[++cnt] = next;
+        vis[dst] = 1;
+        mst[src].push_back(dst);
+        cnt++;
     }
 
+    vector<int> ret;
+    getPath(st, ret, mst);
     int sum = 0;
-    for (int i = 1; i <= n; ++i) sum += grid[mst[i]][mst[(i + 1) % n]];
+    for (int i = 0; i < n; ++i) sum += grid[ret[i]][ret[(i + 1) % n]];
     if (sum < minn) {
         minn = sum;
-        for (int i = 1; i <= n; ++i) path[i] = mst[i];
+        for (int i = 1; i <= n; ++i) path[i] = ret[i - 1];
     }
+}
+
+void getPath(int node, vector<int> &ret, vector<int> mst[]) {
+    ret.push_back(node);
+    for (int &nxt : mst[node]) getPath(nxt, ret, mst);
 }
 
 int main() {
