@@ -26,10 +26,13 @@ int minn = INF;
 
 void solve(int st) {
     int vis[MAXN];
-    for (int i = 0; i < MAXN; ++i) vis[i] = 0;
-    vis[st] = 1;
     vector<int> mst[MAXN];
+    vector<int> ret;
     int cnt = 1;
+    int sum = 0;
+
+    for (int & i : vis) i = 0;
+    vis[st] = 1;
 
     while (cnt < n) {
         int src = 0, dst = 0, minx = INF;
@@ -48,9 +51,7 @@ void solve(int st) {
         cnt++;
     }
 
-    vector<int> ret;
     getPath(st, ret, mst);
-    int sum = 0;
     for (int i = 0; i < n; ++i) sum += grid[ret[i]][ret[(i + 1) % n]];
     if (sum < minn) {
         minn = sum;
