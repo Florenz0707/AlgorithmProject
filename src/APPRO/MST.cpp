@@ -31,7 +31,7 @@ void solve(int st) {
     int cnt = 1;
     int sum = 0;
 
-    for (int & i : vis) i = 0;
+    for (int &i: vis) i = 0;
     vis[st] = 1;
 
     while (cnt < n) {
@@ -61,7 +61,7 @@ void solve(int st) {
 
 void getPath(int node, vector<int> &ret, vector<int> mst[]) {
     ret.push_back(node);
-    for (int &nxt : mst[node]) getPath(nxt, ret, mst);
+    for (int &nxt: mst[node]) getPath(nxt, ret, mst);
 }
 
 int main() {
@@ -77,7 +77,7 @@ int main() {
         solve(i);  // 最小生成树与起点选取有关
 
     long end = clock();
-    cout << "Time cost: " << (double)(end - start) << " ms.\n";
+    cout << "Time cost: " << (double) (end - start) << " ms.\n";
     cout << "Min cost: " << minn << endl;
     for (int i = 1; i <= n; ++i) cout << path[i] << " ";
     cout << endl;

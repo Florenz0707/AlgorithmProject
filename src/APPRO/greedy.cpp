@@ -64,7 +64,7 @@ int main() {
     for (int i = 1; i <= n; ++i) solve(i);
 
     long end = clock();
-    cout << "Time cost: " << (double)(end - start) << " ms.\n";
+    cout << "Time cost: " << (double) (end - start) << " ms.\n";
     cout << "Min cost: " << minn << endl;
     for (int i = 1; i <= n; ++i) cout << path[i] << " ";
     cout << endl;
