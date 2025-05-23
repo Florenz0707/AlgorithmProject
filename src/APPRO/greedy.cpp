@@ -8,6 +8,7 @@ using namespace std;
  * 问题：可以快速求解任意规模的问题，为近似解
  */
 
+#define DEBUG
 #define ll long long
 #define ull unsigned long long
 #define endl "\n"
