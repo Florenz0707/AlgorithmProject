@@ -88,7 +88,7 @@ def calculate_path_length(path, node_coords):
     
     # 加上最后一个节点回到起点(1号节点)的距离
     last_node = path[-1]
-    start_node = 16  # 原点固定为1号节点
+    start_node = 1  # 原点固定为1号节点
     if last_node in node_coords and start_node in node_coords:
         total_distance += calculate_distance(node_coords[last_node], node_coords[start_node])
     else:
