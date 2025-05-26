@@ -15,7 +15,7 @@ using namespace std;
 #define min(x, y) ((x) > (y)) ? (y) : (x)
 
 #define INF 0x3f3f3f3f
-#define MAXN 50
+#define MAXN 1500
 
 int n;
 int grid[MAXN][MAXN];
