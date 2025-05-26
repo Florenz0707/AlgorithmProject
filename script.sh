@@ -2,6 +2,14 @@
 
 CODE_DIR="./src/APPRO"
 DATA_DIR="./resource/testcases/TSP"
+RES_DIR="./result"
+
+if [ -d "$RES_DIR" ]
+then
+	rm -r "$RES_DIR"
+fi
+
+mkdir "$RES_DIR"
 
 find "$CODE_DIR" -type f | while IFS= read -r src;
 do
@@ -20,7 +28,6 @@ do
     		echo "$file_name"
     		"./$out_name" < "$file" > "./result/${src_name%%.*}-${file_name%%.*}.txt"
     	fi
-
     done
 done
 
