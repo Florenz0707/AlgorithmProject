@@ -22,8 +22,8 @@ def read_node_coordinates(filename):
                 if len(parts) == 3:
                     try:
                         node_id = int(parts[0])
-                        x = float(parts[1])
-                        y = float(parts[2])
+                        x = int(float(parts[1]))  # 直接取整
+                        y = int(float(parts[2]))  # 直接取整
                         node_coords[node_id] = (x, y)
                     except ValueError:
                         continue  # 跳过格式错误的行
@@ -70,14 +70,14 @@ def read_path_sequence(filename):
 
 
 def calculate_distance(coord1, coord2):
-    """计算两个坐标之间的欧几里得距离"""
+    """计算两个坐标之间的欧几里得距离（直接返回整数）"""
     x1, y1 = coord1
     x2, y2 = coord2
-    return int(((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5)
+    return int(round(((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5))  # 四舍五入取整
 
 
 def calculate_path_length(path, node_coords):
-    """计算环路路径总长度，包括回到起点(1号节点)的距离"""
+    """计算环路路径总长度，包括回到第一个访问节点的距离"""
     if not path or not node_coords:
         return 0
 
@@ -92,13 +92,14 @@ def calculate_path_length(path, node_coords):
         else:
             print(f"警告：节点 {node1} 或 {node2} 坐标缺失")
 
-    # 加上最后一个节点回到起点(1号节点)的距离
-    last_node = path[-1]
-    start_node = 1  # 原点固定为1号节点
-    if last_node in node_coords and start_node in node_coords:
-        total_distance += calculate_distance(node_coords[last_node], node_coords[start_node])
-    else:
-        print(f"警告：节点 {last_node} 或 {start_node} 坐标缺失")
+    # 加上最后一个节点回到第一个节点的距离
+    if len(path) > 1:  # 确保路径至少有两个节点
+        last_node = path[-1]
+        first_node = path[0]  # 改为回到路径的第一个节点，而不是固定的1号节点
+        if last_node in node_coords and first_node in node_coords:
+            total_distance += calculate_distance(node_coords[last_node], node_coords[first_node])
+        else:
+            print(f"警告：节点 {last_node} 或 {first_node} 坐标缺失")
 
     return total_distance
 
@@ -192,10 +193,10 @@ def main():
     print(f"最短环路路径长度为: {path_length}")
 
     # 生成距离矩阵文件
-    generate_distance_matrix(node_coords, 'ulysses22.txt')
+    generate_distance_matrix(node_coords, dist_matrix_file)
 
     # 导出最短路径文件
-    export_shortest_path(path, path_length, 'ulysses22-ans.txt')
+    export_shortest_path(path, path_length, shortest_path_file)
 
 
 if __name__ == "__main__":
