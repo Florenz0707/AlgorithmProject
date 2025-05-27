@@ -25,8 +25,8 @@ do
     	ans="-ans.txt"
     	if [[ $file_name == *$txt* ]] && ! [[ $file_name == *$ans* ]]
     	then
-    		echo "testing $file_name"
-    		"./$out_name" < "$file" > "./result/${src_name%%.*}-${file_name%%.*}.txt"
+    		echo "-testing $file_name"
+    		"./$out_name" < "$file" > "$RES_DIR/${src_name%%.*}-${file_name%%.*}.txt"
     	fi
     done
 done
