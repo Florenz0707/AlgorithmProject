@@ -66,8 +66,13 @@ int main() {
     long end = clock();
     cout << "Time cost: " << (double) (end - start) << " ms.\n";
     cout << "Min cost: " << minn << endl;
-    for (int i = 1; i <= n; ++i) cout << path[i] << " ";
-    cout << endl;
+    int cnt = 1, id = 1;
+    while (path[id] != 1) id++;
+    while (cnt <= n) {
+        cout << path[id++] << endl;
+        id = id % n + 1;
+        cnt++;
+    }
 
     return 0;
 }
