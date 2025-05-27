@@ -22,10 +22,10 @@ int grid[MAXN][MAXN];
 int vis[MAXN];
 int path[MAXN];
 int minn = INF;
-ll cnt = 0;
+ll rec_cnt = 0;
 
 void dfs(int node, int cost, int len, int cur_path[]) {
-    cnt += 1;
+    rec_cnt += 1;
     if (len >= n) {
         if (grid[1][node] != 0 && cost + grid[1][node] < minn) {
             minn = cost + grid[1][node];
@@ -61,10 +61,15 @@ int main() {
 
     long end = clock();
     cout << "Time cost: " << (double)(end - start) << " ms.\n";
-    cout << "Recursive function called times: " << cnt << endl;
+    cout << "Recursive function called times: " << rec_cnt << endl;
     cout << "Min cost: " << minn << endl;
-    for (int i = 1; i <= n; ++i) cout << path[i] << " ";
-    cout << endl;
+    int cnt = 1, id = 1;
+    while (path[id] != 1) id++;
+    while (cnt <= n) {
+        cout << path[id++] << endl;
+        id = id % n + 1;
+        cnt++;
+    }
 
     return 0;
 }
