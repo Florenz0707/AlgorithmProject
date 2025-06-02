@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-CODE_DIR="./src/APPRO"
-DATA_DIR="./resource/testcases/TSP"
-RES_DIR="./result"
+CODE_DIR="./batchable"
+DATA_DIR="./data"
+RES_DIR="./experiments"
 
 if [ -d "$RES_DIR" ]
 then
@@ -26,7 +26,9 @@ do
     	if [[ $file_name == *$txt* ]] && ! [[ $file_name == *$ans* ]]
     	then
     		echo "-testing $file_name"
-    		"./$out_name" < "$file" > "$RES_DIR/${src_name%%.*}_${file_name%%.*}.txt"
+    		"./$out_name" < "$file" > "$RES_DIR/${src_name%%.*}-${file_name%%.*}.txt"
     	fi
     done
+
+    rm "./$out_name"
 done
