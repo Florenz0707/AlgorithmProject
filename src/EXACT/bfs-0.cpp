@@ -21,6 +21,7 @@ int n;
 int grid[MAXN][MAXN];
 int path[MAXN];
 int minn = INF;
+ll node_num = 0;
 
 struct Status {
     int node = 0;
@@ -70,6 +71,7 @@ int main() {
     while (!qwq.empty()) {
         Status cur = qwq.top();
         qwq.pop();
+        node_num++;
         if (cur.cost > minn) continue;
         if (cur.len >= n) {
             if (cur.cost + grid[1][cur.node] < minn) {
@@ -94,6 +96,7 @@ int main() {
 
     long end = clock();
     cout << "Time cost: " << (double)(end - start) << " ms.\n";
+    cout << "Node visited: " << node_num << endl;
     cout << "Min cost: " << minn << endl;
     int cnt = 1, id = 1;
     while (path[id] != 1) id++;
