@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 CODE_DIR="./src/APPRO"
-DATA_DIR="./resource/testcases/TSP"
-RES_DIR="./result"
+DATA_DIR="./3023244222-1-3/data"
+RES_DIR="./3023244222-1-3/experiments"
 
 if [ -d "$RES_DIR" ]
 then
