@@ -23,13 +23,13 @@ int path[MAXN];
 int minn = INF;
 
 void solve(int st) {
-    int vis[MAXN], _path[MAXN];
+    int vis[MAXN], tmp_path[MAXN];
     int node = st;
     int cnt = 0;
     int cost = 0;
     fill(vis, vis + MAXN, 0);
     vis[node] = 1;
-    _path[++cnt] = node;
+    tmp_path[++cnt] = node;
 
     while (cnt < n) {
         int nxt, minx = INF;
@@ -41,14 +41,14 @@ void solve(int st) {
         }
         cost += minx;
         vis[nxt] = 1;
-        _path[++cnt] = nxt;
+        tmp_path[++cnt] = nxt;
         node = nxt;
     }
 
     cost += grid[node][st];
     if (cost < minn) {
         minn = cost;
-        for (int i = 1; i <= n; ++i) path[i] = _path[i];
+        for (int i = 1; i <= n; ++i) path[i] = tmp_path[i];
     }
 }
 
