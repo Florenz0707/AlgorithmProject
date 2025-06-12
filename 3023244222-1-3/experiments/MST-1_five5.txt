@@ -1,0 +1,7 @@
+Time cost: 0 ms.
+Min cost: 23
+1
+2
+3
+4
+5
