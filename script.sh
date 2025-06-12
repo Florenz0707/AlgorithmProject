@@ -4,12 +4,10 @@ CODE_DIR="./src/APPRO"
 DATA_DIR="./3023244222-1-3/data"
 RES_DIR="./3023244222-1-3/experiments"
 
-if [ -d "$RES_DIR" ]
+if ! [ -d "$RES_DIR" ]
 then
-	rm -r "$RES_DIR"
+	mkdir "$RES_DIR"
 fi
-
-mkdir "$RES_DIR"
 
 find "$CODE_DIR" -type f | while IFS= read -r src;
 do
