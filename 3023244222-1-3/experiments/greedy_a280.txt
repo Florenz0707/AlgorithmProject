@@ -1,4 +1,4 @@
-Time cost: 36 ms.
+Time cost: 34 ms.
 Min cost: 2975
 1
 249
