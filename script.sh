@@ -2,7 +2,7 @@
 
 CODE_DIR="./src/APPRO"
 DATA_DIR="./3023244222-1-3/data"
-RES_DIR="./3023244222-1-3/experiments"
+RES_DIR="./result"
 
 if ! [ -d "$RES_DIR" ]
 then
