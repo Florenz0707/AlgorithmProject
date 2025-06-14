@@ -1,0 +1,8 @@
+Time cost: 0 ms.
+Recursive function called times: 62
+Min cost: 19
+1
+4
+5
+2
+3

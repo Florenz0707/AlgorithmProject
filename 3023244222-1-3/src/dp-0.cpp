@@ -15,7 +15,7 @@ using namespace std;
 #define min(x, y) ((x) > (y)) ? (y) : (x)
 
 #define INF 0x3f3f3f3f
-#define MAXN 17
+#define MAXN 18
 #define MAXM ((1 << (MAXN - 1)) + 2)
 
 int n;
@@ -89,9 +89,8 @@ int main() {
     cout << "Time cost: " << (double) (end - start) << " ms.\n";
     cout << "Min cost: " << dp[0][m - 1] << endl;
     int cnt = 1, id = 0;
-    while (path[id] != 1) id++;
     while (cnt <= n) {
-        cout << path[id] << endl;
+        cout << (path[id] + 1) << endl;
         id = (id + 1) % n;
         cnt++;
     }

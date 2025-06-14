@@ -87,7 +87,7 @@ int main() {
     int cnt = 1, id = 1;
     while (path[id] != 1) id++;
     while (cnt <= n) {
-        cout << path[id++] << endl;
+        cout << path[id] << endl;
         id = id % n + 1;
         cnt++;
     }
